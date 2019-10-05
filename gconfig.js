@@ -19,7 +19,7 @@ module.exports = {
   clean: {
     src: [
       './src/**/sprite.png',
-      './src/**/views/*.wxss',
+      './src/**/*.wxss',
       '!./src/**/pages/*.wxss'
     ]
   },
