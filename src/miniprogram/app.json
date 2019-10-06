@@ -1,20 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room",
-    "views/test/test",
-    "views/index/index"
+    "views/index/index",
+    "views/test/test"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -23,5 +10,29 @@
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FFAB00",
+    "list": [
+      {
+        "pagePath": "pages/homePage/homePage",
+        "text": "首页",
+        "iconPath": "/assets/images/tabBar/home.png",
+        "selectedIconPath": "/assets/images/tabBar/home-sel.png"
+      },
+      {
+        "pagePath": "pages/spikeZone/spikeZone",
+        "text": "秒杀",
+        "iconPath": "/assets/images/tabBar/spike.png",
+        "selectedIconPath": "/assets/images/tabBar/spike-sel.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "/assets/images/tabBar/personal.png",
+        "selectedIconPath": "/assets/images/tabBar/personal-sel.png"
+      }
+    ]
+  }
 }
