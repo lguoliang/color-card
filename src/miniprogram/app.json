@@ -1,5 +1,9 @@
 {
   "pages": [
+    "pages/homepage/homepage",
+    "pages/about/about",
+    "pages/personal/personal",
+    "pages/typeMgt/typeMgt",
     "views/index/index",
     "views/test/test"
   ],
@@ -16,14 +20,14 @@
     "selectedColor": "#FFAB00",
     "list": [
       {
-        "pagePath": "pages/homePage/homePage",
-        "text": "首页",
+        "pagePath": "pages/homepage/homepage",
+        "text": "电子色卡",
         "iconPath": "/assets/images/tabBar/home.png",
         "selectedIconPath": "/assets/images/tabBar/home-sel.png"
       },
       {
-        "pagePath": "pages/spikeZone/spikeZone",
-        "text": "秒杀",
+        "pagePath": "pages/about/about",
+        "text": "关于我们",
         "iconPath": "/assets/images/tabBar/spike.png",
         "selectedIconPath": "/assets/images/tabBar/spike-sel.png"
       },
