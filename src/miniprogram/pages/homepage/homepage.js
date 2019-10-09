@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    inputShowed: false,
+    inputVal: ""
   },
 
   /**
@@ -30,49 +31,28 @@ Page({
       }
     }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 搜索
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */

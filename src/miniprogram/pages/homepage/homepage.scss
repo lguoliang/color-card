@@ -1,0 +1,11 @@
+.prod-search {
+}
+.prod-box {
+  display: flex;
+  .prod-type {
+    width: 200rpx;
+  }
+  .prod-list {
+    flex: 1;
+  }
+}

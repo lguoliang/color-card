@@ -6,17 +6,17 @@
       <view class="weui-label">类型</view>
     </view>
     <view class="weui-cell__bd">
-      <input class="weui-input" placeholder="请输入类型" value="{{type}}" bindinput="handelType"/>
+      <input class="weui-input" placeholder="请输入类型" value="{{type}}" bindinput="handelType" />
     </view>
     <view class="weui-cell__ft">
       <view class="weui-vcode-btn" bind:tap="addType">新增</view>
     </view>
   </view>
   <view class="weui-cells weui-cells_after-title" wx:if="{{typeList}}">
-      <view class="weui-cell" wx:for="{{typeList}}" wx:key="unique">
-          <view class="weui-cell__bd">{{item.type}}</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
+    <view class="weui-cell" wx:for="{{typeList}}" wx:key="unique">
+      <view class="weui-cell__bd">{{item.type}}</view>
+      <view class="weui-cell__ft" data-id="{{item._id}}" bind:tap="removeType">删除</view>
+    </view>
   </view>
 </view>
 <view class="weui-cells__tips">底部说明文字底部说明文字</view>

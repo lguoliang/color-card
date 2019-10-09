@@ -1,0 +1,2 @@
+<!--components/img/img.wxml-->
+<image class="c-class" src="{{imghost}}{{src}}" mode="{{mode}}"></image>

@@ -1,0 +1,6 @@
+<!--pages/cardDetail/cardDetail.wxml-->
+<view>
+  <text>pages/cardDetail/cardDetail.wxml</text>
+  <view>{{cardId}}</view>
+  <image src="{{image}}" />
+</view>

@@ -2,12 +2,22 @@
 	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"enhance": true
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"appid": "wxac37d86aac5cf502",
 	"projectname": "color-card",
@@ -31,7 +41,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -57,6 +67,27 @@
 					"id": -1,
 					"name": "类型管理",
 					"pathName": "pages/typeMgt/typeMgt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "色卡详情",
+					"pathName": "pages/cardDetail/cardDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "详情页",
+					"pathName": "pages/cardDetail/cardDetail",
+					"query": "dentistId=123",
+					"scene": 1012
+				},
+				{
+					"id": -1,
+					"name": "产品管理",
+					"pathName": "pages/productMgt/productMgt",
 					"scene": null
 				}
 			]
