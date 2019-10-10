@@ -1,31 +1,50 @@
-// pages/personal/personal.js
+// pages/mallmanagement/mallmanagement.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatarUrl: './user-unlogin.png'
+    managementItem: [{
+      name: '新增商品',
+      type: 'commodityadd'
+    }, {
+      name: 'banner',
+      num: parseInt(Math.random()*10) + 1,
+      type: 'mallbanner'
+    },{
+      name: '精品推荐',
+      num: parseInt(Math.random()*10) + 1,
+      type: 'mallrecommend'
+    },{
+      name: '未上架',
+      num: parseInt(Math.random()*10) + 1,
+      type: 'notonshelf'
+    },{
+      name: '上架中',
+      num: parseInt(Math.random()*10) + 1,
+      type: 'ontheshelf'
+    },{
+      name: '已下架',
+      num: parseInt(Math.random()*10) + 1,
+      type: 'offtheshelf'
+    },{
+      name: '草稿箱',
+      num: parseInt(Math.random()*10) + 1,
+      type: 'draftbox'
+    },{
+      name: '商品类型',
+      num: parseInt(Math.random()*10) + 1,
+      type: 'commoditytype'
+    }]
   },
 
-  toManagement: function () {
-    wx.navigateTo({
-      url: '/pages/management/management',
-    })
-  },
-
-  toAddress: function (e) {
-    console.log(e.currentTarget.dataset.address)
-    let url
-    switch (e.currentTarget.dataset.address) {
-      case 'management':// 后台管理
-        url = '/pages/management/management'
-        break
+  toAddress (e) {
+    let self = this
+    , url
+    switch (e.currentTarget.dataset.type) {
       case 'commodityadd':// 新增商品
         url = '../commodityadd/commodityadd'
-        break
-      case 'commoditytype':// 类型管理
-        url = '../commoditytype/commoditytype'
         break
       case 'mallbanner':// banner
         url = '../mallrecommend/mallrecommend?type=' + e.currentTarget.dataset.type
@@ -45,14 +64,16 @@ Page({
       case 'draftbox':// 草稿箱
         url = '../commoditylist/commoditylist?type=' + e.currentTarget.dataset.type
         break
-      case 'commoditytype':// 类型管理
+      case 'commoditytype':// 商品类型
         url = '../commoditytype/commoditytype'
         break
       default:
         url = null
     }
-    wx.navigateTo({
-      url: url
-    })
+    if (url) {
+      wx.navigateTo({
+        url: url
+      })
+    }
   }
 })

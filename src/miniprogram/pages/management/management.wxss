@@ -1,0 +1,6 @@
+@charset "UTF-8";
+.mallmanagement{padding:20rpx;min-height:100vh;background:#f6f6f6}
+.management-item{-webkit-box-sizing:border-box;box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:220rpx;height:218rpx;background:#fff;border-radius:16rpx;margin:16rpx 8rpx 0;padding:20rpx;float:left}
+.management-item:first-child{width:100%;margin-top:0}
+.management-item .title-item{font-size:32rpx;color:#333;font-weight:700}
+.management-item .num-item{display:inline-block;background:#eee;border-radius:22rpx;min-width:96rpx;line-height:44rpx;padding:0 28rpx;margin-top:20rpx;text-align:center}

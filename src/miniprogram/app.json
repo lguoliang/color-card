@@ -6,14 +6,17 @@
     "pages/typeMgt/typeMgt",
     "pages/productMgt/productMgt",
     "pages/cardDetail/cardDetail",
+    "pages/management/management",
+    "pages/commoditytype/commoditytype",
+    "pages/commodityadd/commodityadd",
     "views/index/index",
     "views/test/test"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "QuickStart",
+    "backgroundColor": "#F5F5F5",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#81d8cf",
+    "navigationBarTitleText": "...",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

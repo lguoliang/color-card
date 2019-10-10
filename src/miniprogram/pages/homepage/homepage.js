@@ -30,6 +30,18 @@ Page({
         })
       }
     }
+    wx.cloud.callFunction({
+      name: 'createColl',
+      data: {
+        coll: 'test'
+      },
+      success (result) {
+        console.log("成功", result)
+      },
+      fail(result) {
+        console.log("失败", result)
+      }
+    })
   },
   // 搜索
   showInput: function () {

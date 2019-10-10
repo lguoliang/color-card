@@ -1,0 +1,27 @@
+<!--pages/commoditytype/commoditytype.wxml-->
+<view class="commoditytype">
+  <view class="info-item">
+    <view class="info-item-tip">增加商品类型</view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <input placeholder="输入名称" placeholder-class="com-placeholder" />
+      </view>
+      <text class="typeadd-btn" bindtap="addType">添加</text>
+    </view>
+  </view>
+  <view class="info-item-title">左滑删除</view>
+  <view class="info-item weui-cell" wx:for="{{ navList }}" wx:key="unique">
+    <view class="weui-cell__bd"><label>{{ item.nav }}</label></view>
+    <text class="btn-item" data-index="{{ index }}" bindtap="editNav">编辑</text>
+    <text class="btn-item">删除</text>
+  </view>
+  <view class="type-edit-popup {{ showpopup ? 'popup-show' : ''}}">
+    <view class="type-edit-box">
+      <input class="weui-input" placeholder="输入名称" placeholder-class="com-placeholder" value="{{ editValue }}" />
+      <view class="operate-item">
+        <text class="operate-btn" bindtap="operatePopup">取消</text>
+        <text class="operate-btn save-btn" bindtap="saveEdit">保存</text>
+      </view>
+    </view>
+  </view>
+</view>

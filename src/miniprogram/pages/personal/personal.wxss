@@ -1,0 +1,11 @@
+.common-page{padding-bottom:88rpx}
+.personal-header{height:290rpx;background-image:-webkit-linear-gradient(90deg,#c4fff9,#81d8cf);overflow:hidden;position:relative}
+.white-circle{width:1024rpx;height:1024rpx;border-radius:50%;left:50%;margin-left:-512rpx;position:absolute;background:#fff;margin-top:120rpx}
+.user-avatar{width:100%;height:164rpx;position:absolute;z-index:3;top:32rpx;margin-top:12rpx;-webkit-box-sizing:border-box;box-sizing:border-box;text-align:center}
+.user-avatar image{width:140rpx;height:140rpx;border-radius:50%;border:12rpx solid rgba(180,160,120,.1)}
+.user-avatar button{position:absolute;width:100%;height:100%;top:0;left:0;opacity:0}
+.icon-xiangyou{font-size:28rpx;vertical-align:middle;color:#81d8cf}
+.personal-data{display:-webkit-box;display:-ms-flexbox;display:flex;height:140rpx;background-color:#fff}
+.personal-data .com-num{-webkit-box-flex:1;-ms-flex:1;flex:1;text-align:center;padding-top:16rpx;font-size:28rpx;color:#aaa}
+.personal-data .data-num{font-size:36rpx;color:#b4a078}
+.root-item{margin-top:24rpx}
