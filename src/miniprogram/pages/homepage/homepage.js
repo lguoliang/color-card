@@ -65,6 +65,12 @@ Page({
       inputVal: e.detail.value
     });
   },
+  toDetail: function (e) {
+    console.log(e.currentTarget.dataset.num)
+    wx.navigateTo({
+      url: `/pages/cardDetail/cardDetail?num=${e.currentTarget.dataset.num}`
+    })
+  },
   /**
    * 用户点击右上角分享
    */

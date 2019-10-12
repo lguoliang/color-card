@@ -6,7 +6,9 @@ Page({
    */
   data: {
     cardId: null,
-    image: 'http://placehold.jp/150x150.png'
+    image: 'http://placehold.jp/150x150.png',
+    scene: null,
+    num: null
   },
 
   /**
@@ -15,9 +17,35 @@ Page({
   onLoad: function (options) {
     // options 中的 scene 需要使用 decodeURIComponent 才能获取到生成二维码时传入的 scene
     var scene = decodeURIComponent(options.scene)
-    console.log(options)
+    // options.query.scene
+    if (options.scene) {
+      console.log("has scene");
+      var scene = decodeURIComponent(options.scene);
+      console.log("scene is ", scene);
+      var arrPara = scene.split("&");
+      var arr = [];
+      for (var i in arrPara) {
+        arr = arrPara[i].split("=");
+        // wx.setStorageSync(arr[0],arr[1]);
+        console.log("setStorageSync:",arr[0],"=",arr[1]);
+      }
+    } else {
+      console.log("no scene");
+    }
+    console.log('scene', scene)
+    console.log('options', options)
     // var query = options.query.dentistId
     // console.log(query)
+    if (options) {
+      this.setData({
+        num: JSON.stringify(options)
+      })
+    }
+    if (scene) {
+      this.setData({
+        scene: JSON.stringify(scene)
+      })
+    }
     const self = this
     wx.u.http({
       url: 'https://api.weixin.qq.com/cgi-bin/token',

@@ -41,7 +41,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -71,11 +71,11 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "色卡详情",
 					"pathName": "pages/cardDetail/cardDetail",
-					"query": "",
-					"scene": null
+					"query": "scene=num%3D1%26test%3Dasd",
+					"scene": 1047
 				},
 				{
 					"id": 5,
@@ -95,6 +95,7 @@
 					"id": -1,
 					"name": "我的",
 					"pathName": "pages/personal/personal",
+					"query": "",
 					"scene": null
 				}
 			]

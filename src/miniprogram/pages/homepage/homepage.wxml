@@ -39,7 +39,7 @@
       <scroll-view scroll-y="{{true}}" class="prod-list">
         <view class="list-group">
           <view class="prod-list-tit">新品</view>
-          <view class="weui-cell prod-list-item" wx:for="{{10}}" wx:key="unique">
+          <view class="weui-cell prod-list-item" wx:for="{{10}}" wx:key="unique" bind:tap="toDetail" data-num="{{index}}">
             <view class="weui-cell__hd prod-img">
               <image src="http://placehold.jp/60x60.png"/>
             </view>
