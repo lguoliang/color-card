@@ -21,6 +21,9 @@ Page({
     if (options.scene) {
       console.log("has scene");
       var scene = decodeURIComponent(options.scene);
+      this.setData({
+        scene: JSON.stringify(scene)
+      })
       console.log("scene is ", scene);
       var arrPara = scene.split("&");
       var arr = [];
@@ -30,6 +33,9 @@ Page({
         console.log("setStorageSync:",arr[0],"=",arr[1]);
       }
     } else {
+      this.setData({
+        scene: "no scene"
+      })
       console.log("no scene");
     }
     console.log('scene', scene)
@@ -41,11 +47,11 @@ Page({
         num: JSON.stringify(options)
       })
     }
-    if (scene) {
-      this.setData({
-        scene: JSON.stringify(scene)
-      })
-    }
+    // if (scene) {
+    //   this.setData({
+    //     scene: JSON.stringify(scene)
+    //   })
+    // }
     const self = this
     wx.u.http({
       url: 'https://api.weixin.qq.com/cgi-bin/token',
