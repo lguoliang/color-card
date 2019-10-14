@@ -1,5 +1,13 @@
 //app.js
 App({
+  globalData: {
+    userId: '', // 用户ID
+    userInfo: null, // 用户信息
+    auth: { // 授权状态
+      'scope.userInfo': false
+    },
+    logged: false // 登录状态
+  },
   onLaunch: function () {
     wx.u = require('./assets/js/utils');
     wx.c = require('./assets/js/config');

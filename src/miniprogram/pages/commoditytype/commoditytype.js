@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    typeName: '',
+    typeColl: '',
     navList: [{
       nav: '类型1'
     },{
@@ -21,6 +23,11 @@ Page({
     self.getType();
     console.log(app.globalData)
     console.log(app.globalData.openid)
+  },
+  handleChange: function (e) {
+    this.setData({
+      [e.currentTarget.dataset.name]: e.detail.value
+    })
   },
   // 编辑
   editNav (e) {
@@ -42,20 +49,53 @@ Page({
     })
   },
   // 获取当前类型
-  getType: function () {},
-  addType: function () {
-    const db = wx.cloud.database()
-    db.collection('commodityType').add({
-      data: {
-        type: '类型1'
-      },
+  getType: function () {
+    wx.cloud.callFunction({
+      name: 'getProdType',
       success: res => {
-        console.log(res)
-        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-      },
-      fail: err => {
-        console.error('[数据库] [新增记录] 失败：', err)
+        console.log('res', res)
       }
     })
+  },
+  // 新增类型
+  async addType () {
+    if (!this.data.typeName || !this.data.typeColl) {
+      wx.showToast({title: '类型不能为空', icon: 'none'})
+    } else {
+      console.log(this.data.typeName)
+      console.log(this.data.typeColl)
+      const db = wx.cloud.database()
+      const coll = db.collection('prodType')
+      let checktype
+      await coll.where({
+        type: this.data.typeName
+      }).get().then(res => {
+        checktype = res.data.length
+      })
+      if (!checktype) {
+        try {
+          await wx.cloud.callFunction({
+            name: 'createColl',
+            data: {
+              coll: this.data.typeColl
+            }
+          })
+        } catch (e) {
+          // console.log('e', e)
+        }
+        coll.add({
+          data: {
+            type: this.data.typeName,
+            coll: this.data.typeColl
+          },
+          success: res => {
+            // this.queryType()
+            console.log('添加')
+          }
+        })        
+      } else {
+        console.log('已存在')
+      }
+    }
   }
 })

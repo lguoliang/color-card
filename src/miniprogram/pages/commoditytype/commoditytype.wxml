@@ -1,10 +1,11 @@
 <!--pages/commoditytype/commoditytype.wxml-->
 <view class="commoditytype">
   <view class="info-item">
-    <view class="info-item-tip">增加商品类型</view>
+    <view class="info-item-tip">增加类型</view>
     <view class="weui-cell">
-      <view class="weui-cell__bd">
-        <input placeholder="输入名称" placeholder-class="com-placeholder" />
+      <view class="weui-cell__bd weui-flex">
+        <input class="weui-flex__item" placeholder="中文" placeholder-class="com-placeholder" value="{{typeName}}" data-name="typeName" bind:input="handleChange"/>
+        <input class="weui-flex__item" placeholder="英文" placeholder-class="com-placeholder" value="{{typeColl}}" data-name="typeColl" bind:input="handleChange" />
       </view>
       <text class="typeadd-btn" bindtap="addType">添加</text>
     </view>
