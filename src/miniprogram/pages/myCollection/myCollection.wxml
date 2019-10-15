@@ -1,0 +1,31 @@
+<!--pages/myCollection/myCollection.wxml-->
+<view class="my-collection">
+  <view class="prod-list">
+    <view class="flex prod-group" wx:for="{{aList}}" wx:key="unique">
+      <movable-area class="flex_item">
+        <movable-view direction="horizontal"
+          inertia="true" 
+          out-of-bounds="true"
+          x="{{item.xmove}}"
+          data-productIndex="{{index}}"
+          bindchange="handleMovableChange"
+          bindtouchend="handleTouchEnd">
+          <view class="prod-item flex">
+            <view class="prod-img"><image src="https://picsum.photos/id/{{item.url}}/180/180"></image></view>
+            <view class="flex_item">
+              <view class="prod-tit">{{item.title}}</view>
+              <view class="prod-info">{{item.desc}}</view>
+              <view class="prod-price flex">
+                <view class="flex_item">￥{{item.price}}<view class="tag" wx:if="{{index<2}}">已购买</view></view>
+                <text>赚￥{{item.sharePrc}}</text>
+              </view>
+            </view>
+          </view>
+        </movable-view>
+      </movable-area>
+      <view class="prod-operate">
+        <sprite icon="delete" />
+      </view>
+    </view>
+  </view>
+</view>

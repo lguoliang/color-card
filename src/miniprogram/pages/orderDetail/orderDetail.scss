@@ -1,0 +1,89 @@
+/* pages/orderDetail/orderDetail.wxss */
+page {
+  background: #f2f2f2;
+}
+.order-detail {
+  background: #fff;
+}
+.order-status {
+  padding: 64rpx;
+  text-align: center;
+  box-shadow: 0 1rpx 0 0 #EEEEF0;
+  view {
+    margin-top: 32rpx;
+    font-size: 40rpx;
+    color: #181C28;
+    line-height: 40rpx;
+  }
+}
+.order-info {
+  padding: 32rpx;
+  &:not(:last-child) {
+    box-shadow: 0 1rpx 0 0 #EEEEF0;
+  }
+  .info-item {
+    line-height: 1;
+    font-size: 28rpx;
+    color: #181C28;
+    label {
+      width: 160rpx;
+      color: #7F8593;
+      margin-right: 16rpx;
+    }
+    &:not(:last-child) {
+      margin-bottom: 32rpx;
+    }
+    .clr-red {
+      color: #FF555F;
+    }
+  }
+}
+.order-item {
+  &:not(:last-child) {
+    margin-bottom: 48rpx;
+  }
+  .order-img {
+    width: 144rpx;
+    height: 144rpx;
+    border-radius: 8rpx;
+    margin-right: 32rpx;
+    overflow: hidden;
+  }
+  .flex_item {
+    position: relative;
+  }
+  .order-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #181C28;
+    line-height: 48rpx;
+    margin-bottom: 16rpx;
+  }
+  .order-desc {
+    font-size: 24rpx;
+    color: #7F8593;
+    line-height: 32rpx;
+    margin-bottom: 20rpx;
+    .tag {
+      display: inline-block;
+      vertical-align: top;
+      background: #FFFFFF;
+      border: 1rpx solid #B4ECE6;
+      border-radius: 4rpx;
+      font-size: 20rpx;
+      color: #15B0A0;
+      line-height: 30rpx;
+      padding: 0 8rpx;
+      margin-right: 16rpx;
+    }
+  }
+  .order-price {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: bold;
+    font-size: 28rpx;
+    color: #FF555F;
+    line-height: 28rpx;
+  }
+}

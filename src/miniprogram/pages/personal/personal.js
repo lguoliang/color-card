@@ -48,6 +48,9 @@ Page({
       case 'commoditytype':// 类型管理
         url = '../commoditytype/commoditytype'
         break
+      case 'index':// 测试商城
+        url = '../index/index'
+        break
       default:
         url = null
     }

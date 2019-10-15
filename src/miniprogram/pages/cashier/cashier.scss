@@ -1,0 +1,58 @@
+.cashier-page {
+  min-height: 100vh;
+  background: #f2f2f2;
+  .prod-info {
+    padding: 56rpx;
+    text-align: center;
+    background: #fff;
+    border-bottom: 1rpx solid #EEEEF0;
+    .prod-img {
+      display: inline-block;
+      vertical-align: top;
+      width: 128rpx;
+      height: 128rpx;
+      border-radius: 8rpx;
+      overflow: hidden;
+      margin-bottom: 32rpx;
+    }
+    .prod-title {
+      font-size: 32rpx;
+      color: #181C28;
+      line-height: 48rpx;
+      margin-bottom: 56rpx;
+    }
+    .prod-price {
+      font-size: 24rpx;
+      color: #7F8593;
+      line-height: 1;
+      strong {
+        display: block;
+        font-size: 48rpx;
+        color: #FF555F;
+        margin-top: 16rpx;
+      }
+    }
+  }
+}
+.list-group {
+  background: #fff;
+  .list-item {
+    font-size: 32rpx;
+    color: #181C28;
+    padding: 0 32rpx;
+    .flex_item {
+      line-height: 104rpx;
+      padding: 0 0 0 32rpx;
+    }
+  }
+}
+.order-pay {
+  margin: 64rpx 32rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  background: #4283F4;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+}

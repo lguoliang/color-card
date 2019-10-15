@@ -1,0 +1,10 @@
+.prod-item{padding:32rpx;background:#fff}
+.prod-item .prod-img image{width:180rpx;height:180rpx;display:block;border-radius:8rpx;margin-right:32rpx}
+.prod-item .prod-tit{font-weight:700;font-size:32rpx;color:#181C28;line-height:44rpx;margin-bottom:8rpx;white-space:nowrap;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis}
+.prod-item .prod-info{font-size:26rpx;color:#7F8593;text-align:justify;line-height:40rpx;display:-webkit-box;-webkit-line-clamp:2;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;-webkit-box-orient:vertical}
+.prod-item .prod-price{margin-top:16rpx;font-size:32rpx;font-weight:700;color:#FF555F;line-height:32rpx;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.prod-item .prod-price text{font-size:26rpx;color:#51C75B;text-align:right;line-height:26rpx}
+.prod-item .tag{display:inline-block;vertical-align:top;background:#FFF;border:1rpx solid #B4ECE6;border-radius:4rpx;font-size:20rpx;color:#15B0A0;line-height:30rpx;padding:0 8rpx;margin-left:16rpx}
+.prod-list movable-area,.prod-list movable-view{height:244rpx}
+.prod-list movable-view{width:100vw;z-index:1}
+.prod-operate{padding:86rpx 64rpx;width:200rpx}

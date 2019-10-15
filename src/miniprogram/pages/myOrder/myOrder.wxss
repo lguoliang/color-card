@@ -1,0 +1,8 @@
+.order-list{padding:32rpx}
+.order-item:not(:last-child){margin-bottom:48rpx}
+.order-item .order-img{width:144rpx;height:144rpx;border-radius:8rpx;margin-right:32rpx;overflow:hidden}
+.order-item .flex_item{position:relative}
+.order-item .order-title{font-size:32rpx;font-weight:700;color:#181C28;line-height:48rpx;margin-bottom:16rpx}
+.order-item .order-desc{font-size:24rpx;color:#7F8593;line-height:32rpx;margin-bottom:20rpx}
+.order-item .order-desc .tag{display:inline-block;vertical-align:top;background:#FFF;border:1rpx solid #B4ECE6;border-radius:4rpx;font-size:20rpx;color:#15B0A0;line-height:30rpx;padding:0 8rpx;margin-right:16rpx}
+.order-item .order-price{position:absolute;bottom:0;left:0;font-weight:700;font-size:28rpx;color:#FF555F;line-height:28rpx}

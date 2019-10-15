@@ -9,6 +9,15 @@
     "pages/management/management",
     "pages/commoditytype/commoditytype",
     "pages/commodityadd/commodityadd",
+    
+    "pages/index/index",
+    "pages/community/community",
+    "pages/prodDetail/prodDetail",
+    "pages/myOrder/myOrder",
+    "pages/myCollection/myCollection",
+    "pages/myRretail/myRretail",
+    "pages/orderDetail/orderDetail",
+    "pages/cashier/cashier",
     "views/index/index",
     "views/test/test"
   ],

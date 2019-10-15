@@ -1,0 +1,10 @@
+.cashier-page{min-height:100vh;background:#f2f2f2}
+.cashier-page .prod-info{padding:56rpx;text-align:center;background:#fff;border-bottom:1rpx solid #EEEEF0}
+.cashier-page .prod-info .prod-img{display:inline-block;vertical-align:top;width:128rpx;height:128rpx;border-radius:8rpx;overflow:hidden;margin-bottom:32rpx}
+.cashier-page .prod-info .prod-title{font-size:32rpx;color:#181C28;line-height:48rpx;margin-bottom:56rpx}
+.cashier-page .prod-info .prod-price{font-size:24rpx;color:#7F8593;line-height:1}
+.cashier-page .prod-info .prod-price strong{display:block;font-size:48rpx;color:#FF555F;margin-top:16rpx}
+.list-group{background:#fff}
+.list-group .list-item{font-size:32rpx;color:#181C28;padding:0 32rpx}
+.list-group .list-item .flex_item{line-height:104rpx;padding:0 0 0 32rpx}
+.order-pay{margin:64rpx 32rpx;height:96rpx;line-height:96rpx;text-align:center;background:#4283F4;border-radius:8rpx;font-size:32rpx;color:#FFF}

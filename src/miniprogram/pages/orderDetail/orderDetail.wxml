@@ -1,0 +1,35 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="order-detail">
+  <view class="order-status">
+    <sprite icon="success" />
+    <view>已购买</view>
+  </view>
+  <view class="order-info">
+    <view class="flex order-item" wx:for="{{orderList}}" wx:key="unique" bind:tap="toDetail">
+      <img class="order-img" src="https://picsum.photos/id/{{item.url}}/144/144" />
+      <view class="flex_item">
+        <view class="order-title">{{item.title}}</view>
+        <!-- <view class="order-desc"><text class="tag">已购买</text>2019/05/24  18:00:00</view> -->
+        <view class="order-price">￥{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="order-info">
+    <view class="flex info-item">
+      <label>订单编号：</label>
+      <view class="flex_item">24682019052410141206</view>
+    </view>
+    <view class="flex info-item">
+      <label>下单时间：</label>
+      <view class="flex_item">2019/05/24  18:00:00</view>
+    </view>
+    <view class="flex info-item">
+      <label>支付方式：</label>
+      <view class="flex_item">微信支付</view>
+    </view>
+    <view class="flex info-item">
+      <label>实付款：</label>
+      <view class="flex_item clr-red"><strong>￥168</strong></view>
+    </view>
+  </view>
+</view>

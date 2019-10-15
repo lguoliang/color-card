@@ -43,6 +43,10 @@
           <view class="weui-cell__bd">产品管理</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </button>
+        <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active" data-address="index" bindtap="toAddress">
+          <view class="weui-cell__bd">商城</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </button>
         <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__bd">关于我们</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>

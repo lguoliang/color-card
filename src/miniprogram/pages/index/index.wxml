@@ -1,0 +1,45 @@
+<!--index.wxml-->
+<view class="page">
+  <!-- <tabs></tabs> -->
+  <view class="tabs">
+    <text class="tabs-item {{index === currentTab ? 'active' : ''}}" wx:for="{{navbar}}" wx:key="unique" data-current="{{index}}" bind:tap="selectTab">{{item}}</text>
+  </view>
+  <scroll-view scroll-y="{{true}}" class="section">
+    <swiper class="prod-group"
+    current="{{currentTab}}"
+    duration="300"
+    bindchange="prodChange"
+    style="height: {{swiperH[currentTab]}}px;min-height: {{minSwiperH}}px">
+      <block wx:for="{{3}}" wx:key="unique">
+        <swiper-item>
+          <view class="prod-list">
+            <view class="prod-item flex" wx:for="{{prodList}}" wx:key="unique" bind:tap="toDetail">
+              <view class="prod-img"><image src="https://picsum.photos/id/{{item.url}}/180/180"></image></view>
+              <view class="flex_item">
+                <view class="prod-tit">{{item.title}}</view>
+                <view class="prod-info">{{item.desc}}</view>
+                <view class="prod-price flex">
+                  <view class="flex_item">￥{{item.price}}<view class="tag" wx:if="{{index<2}}">已购买</view></view>
+                  <text>赚￥{{item.sharePrc}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <view class="prod-list">
+      <view class="prod-item flex" wx:for="{{10}}" wx:key="unique">
+        <view class="prod-img"><image src="http://placehold.jp/90x90.png"></image></view>
+        <view class="flex_item">
+          <view class="prod-tit">Sales of NIO at Q3 increased by 35.1%, and long range models to be delivered since Oct.</view>
+          <view class="prod-info">Few days ago, the supercharger of Lincoln under Ford Group was spotted overseas. It resembles the one of Tesla on exterior, but the maximum charging output remains unknown.</view>
+          <view class="prod-price flex">
+            <view class="flex_item">￥168</view>
+            <text>￥25.2</text>
+          </view>
+        </view>
+      </view>
+    </view> -->
+  </scroll-view>
+</view>
