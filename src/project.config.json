@@ -41,7 +41,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -102,6 +102,13 @@
 					"id": -1,
 					"name": "新增类型",
 					"pathName": "pages/commoditytype/commoditytype",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增产品",
+					"pathName": "pages/commodityadd/commodityadd",
 					"scene": null
 				}
 			]

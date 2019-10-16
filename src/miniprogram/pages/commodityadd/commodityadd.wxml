@@ -1,5 +1,10 @@
 <!--pages/commodityadd/commodityadd.wxml-->
 <view class="commodity-add">
+  <view class="info-item weui-cell">
+    <label>是否新品</label>
+    <view class="weui-cell__bd"><switch class="switch-item" checked="{{false}}" color="#81d8cf" /></view>
+    <!-- <switch class="switch-item" checked color="#81d8cf" /> -->
+  </view>
   <view class="info-item weui-cell weui-cell_access">
     <label>商品类型</label>
     <view class="weui-cell__bd">
@@ -12,7 +17,13 @@
   <view class="info-item weui-cell">
     <label>商品名称</label>
     <view class="weui-cell__bd">
-      <input placeholder="商品名称" placeholder-class="com-placeholder" />
+      <input placeholder="请输入商品名称" placeholder-class="com-placeholder" />
+    </view>
+  </view>
+  <view class="info-item weui-cell">
+    <label>商品编号</label>
+    <view class="weui-cell__bd">
+      <input placeholder="输入商品编号" placeholder-class="com-placeholder" />
     </view>
   </view>
   <view class="info-item">
@@ -37,39 +48,7 @@
       <view class="upload-btn" bindtap="uploadImg" wx:if="{{ max > 0 }}"></view>
     </view>
   </view>
-  <view class="info-item">
-    <view class="info-item-tip">商品价格</view>
-    <view class="exchange-group weui-cell">
-      <!-- <label>积分兑换</label> -->
-      <picker bindchange="exchangeSel" value="{{ exchangeIndex }}" range="{{ exchangeList }}">
-        <view>{{ exchangeMode }}</view>
-      </picker>
-      <view class="weui-cell__bd">
-        <view class="exchange-type" wx:if="{{ exchangeIndex == 0 || exchangeIndex == 2 }}">
-          <input placeholder-class="com-placeholder" />
-          <text class="com-placeholder">输入兑换积分</text>
-        </view>
-        <view class="exchange-type" wx:if="{{ exchangeIndex == 1 || exchangeIndex == 2 }}">
-          <input placeholder-class="com-placeholder" />
-          <text class="com-placeholder">输入兑换价格</text>
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="info-item weui-cell">
-    <label>商品价格</label>
-    <view class="weui-cell__bd">
-      <input placeholder="输入兑换积分" placeholder-class="com-placeholder" />
-    </view>
-  </view>
-  <view class="info-item weui-cell">
-    <label>商品库存</label>
-    <view class="weui-cell__bd">
-      <input placeholder="输入数量" placeholder-class="com-placeholder" />
-    </view>
-  </view>
   <view class="operate-group">
-    <view class="operate-btn btn-blue" bindtap="saveEvent">保存到未上架</view>
-    <view class="operate-btn" bindtap="saveEvent">保存草稿箱</view>
+    <view class="operate-btn btn-blue" bindtap="saveEvent">保存</view>
   </view>
 </view>

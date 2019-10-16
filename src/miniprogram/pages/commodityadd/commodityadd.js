@@ -9,14 +9,11 @@ Page({
     typeIndex: 0,
     typeValue: null,
     imgList: [],
-    max: 8,
-    exchangeMode: '积分兑换',
-    exchangeList: ['积分兑换', '人民币兑换', '积分/人民币'],
-    exchangeIndex: 0
+    max: 8
   },
   onShow: function () {
     let self = this
-    self.getAticle()
+    // self.getAticle()
   },
   // 商品类型选择
   typeSel: function(e) {
@@ -26,15 +23,6 @@ Page({
       typeValue: self.data.typeList[e.detail.value]
     })
   },
-  // 兑换方式选择
-  exchangeSel: function (e) {
-    let self = this
-    console.log(e.detail.value)
-    self.setData({
-      exchangeIndex: e.detail.value,
-      exchangeMode: self.data.exchangeList[e.detail.value]
-    })
-  },
   // 上传图片
   uploadImg: function () {
     let self = this
@@ -42,6 +30,7 @@ Page({
       count: self.data.max,
       success (res) {
         console.log(self.data.max - res.tempFilePaths.length)
+        console.log('tempFilePaths', res.tempFilePaths)
         self.setData({
           max: self.data.max - res.tempFilePaths.length,
           imgList: self.data.imgList.concat(res.tempFilePaths)
@@ -72,42 +61,41 @@ Page({
       current: url
     })
   },
-  getAticle: function () {
-    const db = wx.cloud.database()
-    db.collection('article').get({
-      success: res => {
-        console.log(res)
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '查询记录失败'
-        })
-        console.error('[数据库] [查询记录] 失败：', err)
-      }
-    })
-  },
   saveEvent: function () {
-    const db = wx.cloud.database()
-    console.log(db)
-    db.collection('article').add({
-      data: {
-        name: '文章作者',
-        title: '评论题目',
-        content: '评论内容',
-        md: 'markdown',
-        moment: '发表时间',
-        comments: '文章评论数',
-        pv: '浏览量',
-        avator: '用户头像'
-      },
-      success: res => {
-        console.log(res)
-        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-      },
-      fail: err => {
-        console.error('[数据库] [新增记录] 失败：', err)
-      }
-    })
+    // const db = wx.cloud.database()
+    // console.log(db)
+    // db.collection('article').add({
+    //   data: {}
+    // })
+    let imgList = this.data.imgList
+    if (!imgList.length) {
+      wx.showToast({ title: '请上传图片', icon: 'none' })
+    } else {
+      //上传图片到云存储
+      wx.showLoading({ title: '上传中' })
+      let promiseArr = []
+      imgList.forEach((value, index) => {
+        promiseArr.push(new Promise((reslove, reject) => {
+          let item = value
+          let suffix = /\.\w+$/.exec(item)[0]
+          console.log(suffix)
+          wx.cloud.uploadFile({
+            cloudPath: `003/${index}${suffix}`,
+            filePath: item
+          }).then(res => {
+            console.log(res)
+            // reslove()
+            wx.hideLoading();
+            wx.showToast({ title: "上传成功" })
+          }).catch(error => {
+            wx.hideLoading();
+            wx.showToast({ title: "上传失败" })
+          })
+        }))
+      })
+      Promise.all(promiseArr).then(res => {
+        console.log("图片上传完成后再执行")
+      })
+    }
   }
 })

@@ -25,3 +25,4 @@
 .exchange-type{position:relative;padding:22rpx 0}
 .exchange-type text{position:absolute;right:0;top:0;bottom:0;margin:auto;line-height:86rpx}
 .exchange-type:not(:first-child){border-top:1rpx solid #eee}
+.switch-item{zoom:.8}
