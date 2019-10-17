@@ -5,10 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    cloudimg: wx.c.cloudimg,
     cardId: null,
     image: 'http://placehold.jp/150x150.png',
     scene: null,
-    num: null
+    num: null,
+    imgList: [],
+    prodDetail: null
   },
 
   /**
@@ -37,6 +40,17 @@ Page({
         scene: "no scene"
       })
       console.log("no scene");
+      console.log(options)
+      const db = wx.cloud.database()
+      db.collection('product').where({
+        prodNum: options.num
+      }).get().then(res => {
+        console.log('product', res)
+        console.log('cloudImg', wx.c.cloudImg)
+        this.setData({
+          prodDetail: res.data[0]
+        })
+      })
     }
     console.log('scene', scene)
     console.log('options', options)
@@ -105,7 +119,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log('cloudImgqasd', wx.c.cloudimg)
+    this.setData({
+      cloudimg: wx.c.cloudimg
+    })
   },
 
   /**

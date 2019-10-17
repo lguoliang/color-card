@@ -1,7 +1,7 @@
 <!-- pages/homepage/homepage.wxml -->
 <view class="homepage">
   <view class="c-header">
-    <view class="prod-search">
+    <!-- <view class="prod-search">
       <view class="weui-search-bar">
         <view class="weui-search-bar__form">
           <view class="weui-search-bar__box">
@@ -20,34 +20,41 @@
           取消
         </view>
       </view>
-    </view>
+    </view> -->
+    <view><image src="cloud://gl123-fcf12c.676c-gl123-fcf12c-1258754048/#test01/2.png" /></view>
+    <view><image src="cloud://gl123-fcf12c.676c-gl123-fcf12c-1258754048/0012/2.png" /></view>
   </view>
   <scroll-view class="c-section">
     <view class="prod-box">
       <scroll-view scroll-y="{{true}}" class="prod-type">
-        <view class="prod-type-item {{index === 0 ? 'active':''}}" wx:for="{{10}}" wx:key="unique">新品</view>
-        <!-- <view class="weui-cell">
-          <view class="weui-cell__bd">标题文字</view>
-        </view>
-        <view class="weui-cell">
-          <view class="weui-cell__bd">标题文字</view>
-        </view>
-        <view class="weui-cell">
-          <view class="weui-cell__bd">标题文字</view>
-        </view> -->
+        <view class="prod-type-item {{index === typeIndex ? 'active':''}}" wx:for="{{typeList}}" wx:key="unique" data-coll="{{item.coll}}" data-index="{{index}}" bind:tap="changeType">{{item.type}}</view>
       </scroll-view>
       <scroll-view scroll-y="{{true}}" class="prod-list">
         <view class="list-group">
-          <view class="prod-list-tit">新品</view>
-          <view class="weui-cell prod-list-item" wx:for="{{10}}" wx:key="unique" bind:tap="toDetail" data-num="{{index}}">
-            <view class="weui-cell__hd prod-img">
-              <image src="http://placehold.jp/60x60.png"/>
+          <view class="prod-list-tit">{{typeList[typeIndex].type}}</view>
+          <block wx:if="{{typeProd.length > 0}}">
+            <view class="weui-cell prod-list-item" wx:for="{{typeProd}}" wx:key="unique" bind:tap="toDetail" data-num="{{item.prodNum}}">
+              <view class="weui-cell__hd prod-img">
+                <!-- <image src="http://placehold.jp/60x60.png"/> -->
+                <!-- <image src="{{cloudimg}}{{item.prodImg[0]}}"/> -->
+                <image src="{{item.prodImg[0]}}"/>
+              </view>
+              <view class="weui-cell__bd">
+                <view class="prod-code">{{item.prodNum}}</view>
+                <view class="prod-info">{{item.prodImg[0]}}</view>
+                <view class="prod-info">{{item.prodDesc}}</view>
+              </view>
             </view>
-            <view class="weui-cell__bd">
-              <view class="prod-code">0123#</view>
-              <view class="prod-info">60支</view>
+          </block>
+          <block wx:else>
+            <view class="weui-loadmore">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">正在加载</view>
             </view>
-          </view>
+            <view class="weui-loadmore weui-loadmore_line">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了</view>
+            </view>
+          </block>
         </view>
       </scroll-view>
     </view>

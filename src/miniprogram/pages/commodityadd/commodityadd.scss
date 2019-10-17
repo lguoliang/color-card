@@ -5,7 +5,7 @@
 .commodity-add {
   min-height: 100vh;
   background: #f6f6f6;
-  padding: 28rpx 0;
+  padding: 28rpx 0 0;
 }
 .commodity-add .info-item {
   background: #fff;
@@ -104,18 +104,18 @@
   height: 72rpx;
 }
 .operate-group {
-  padding: 80rpx 28rpx 0;
+  // padding: 80rpx 28rpx 0;
 }
 .operate-group .operate-btn:not(:first-child) {
   margin-top: 16rpx;
 }
 .operate-btn {
-  width: 694rpx;
+  // width: 694rpx;
   height: 90rpx;
   line-height: 90rpx;
   font-size: 30rpx;
   color: #333;
-  border-radius: 16rpx;
+  // border-radius: 16rpx;
   text-align: center;
   background: #fff;
 }

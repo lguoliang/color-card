@@ -42,8 +42,8 @@
       {
         "pagePath": "pages/about/about",
         "text": "关于我们",
-        "iconPath": "/assets/images/tabBar/spike.png",
-        "selectedIconPath": "/assets/images/tabBar/spike-sel.png"
+        "iconPath": "/assets/images/tabBar/about.png",
+        "selectedIconPath": "/assets/images/tabBar/about-sel.png"
       },
       {
         "pagePath": "pages/personal/personal",

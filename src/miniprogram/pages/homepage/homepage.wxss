@@ -2,8 +2,8 @@
 .c-section{-webkit-box-flex:1;-ms-flex:1;flex:1;overflow:hidden}
 .prod-search{height:400rpx}
 .prod-box{display:-webkit-box;display:-ms-flexbox;display:flex;height:100%}
-.prod-box .prod-type{width:160rpx;overflow-scrolling:touch;-webkit-overflow-scrolling:touch}
-.prod-box .prod-type .prod-type-item{position:relative;height:88rpx;line-height:88rpx;font-size:28rpx;color:#666;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;white-space:nowrap;padding:0 20rpx;text-align:center}
+.prod-box .prod-type{overflow-scrolling:touch;-webkit-overflow-scrolling:touch}
+.prod-box .prod-type .prod-type-item{position:relative;width:160rpx;height:88rpx;line-height:88rpx;font-size:28rpx;color:#666;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;white-space:nowrap;padding:0 20rpx;text-align:center}
 .prod-box .prod-type .prod-type-item.active{background:#fff}
 .prod-box .prod-type .prod-type-item.active:before{content:'';width:6rpx;height:60rpx;position:absolute;top:2rpx;bottom:2rpx;left:0;margin:auto;border-radius:0 60rpx 60rpx 0;background-image:-webkit-gradient(linear,left top,left bottom,from(#ffd600),to(#ffae00));background-image:-o-linear-gradient(top,#ffd600,#ffae00);background-image:linear-gradient(top,#ffd600,#ffae00)}
 .prod-box .prod-list{-webkit-box-flex:1;-ms-flex:1;flex:1;background:#fff;height:100%;overflow-scrolling:touch;-webkit-overflow-scrolling:touch}

@@ -21,6 +21,14 @@ const http = function (req) {
   })
 }
 
+const toast = function (title) {
+  wx.showToast({
+    icon: 'none',
+    title: title
+  })
+}
+
 module.exports = {
-  http: http
+  http: http,
+  toast: toast
 }
