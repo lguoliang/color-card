@@ -39,6 +39,8 @@
                   <view class="prod-code">{{item.num}}</view>
                   <view class="prod-info">{{item.desc}}</view>
                 </view>
+                <view class="operate-btn" catchtap="editProd" data-folder="{{item.folder}}" data-coll="{{item.coll}}">编辑</view>
+                <view class="operate-btn" catchtap="deleteProd" data-folder="{{item.folder}}" data-coll="{{item.coll}}">删除</view>
               </view>
             </block>
             <block wx:else>

@@ -113,6 +113,58 @@ Page({
       url: `/pages/cardDetail/cardDetail?num=${e.currentTarget.dataset.num}`
     })
   },
+  // 编辑产品
+  editProd: function (e) {
+    console.log(e.currentTarget.dataset.folder)
+    console.log(e.currentTarget.dataset.coll)
+    wx.navigateTo({
+      url: `/pages/commodityadd/commodityadd?coll=${e.currentTarget.dataset.coll}&folder=${e.currentTarget.dataset.folder}`
+    })
+  },
+  // 删除产品
+  deleteProd: function (e) {
+    console.log(e.currentTarget.dataset.folder)
+    console.log(e.currentTarget.dataset.coll)
+    let self = this
+    wx.showModal({
+      title: '提示',
+      content: '确定删除？',
+      success (res) {
+        if (res.confirm) {
+          self.handleDelete({
+            folder: e.currentTarget.dataset.folder,
+            coll: e.currentTarget.dataset.coll
+          })
+        }
+      }
+    })
+  },
+  async handleDelete (event) {
+    const db = wx.cloud.database()
+    const product = db.collection('product')
+    const hot = db.collection('hot')
+    const coll = db.collection(event.coll)
+    await product.where({
+      folder: event.folder
+    }).get().then(res => {
+      wx.cloud.deleteFile({
+        fileList: res.data[0].img
+      })
+      product.doc(res.data[0]._id).remove()
+    })
+    await hot.where({
+      folder: event.folder
+    }).get().then(res => {
+      hot.doc(res.data[0]._id).remove()
+    })
+    await coll.where({
+      folder: event.folder
+    }).get().then(res => {
+      coll.doc(res.data[0]._id).remove().then(res => {
+        console.log('handleDelete', res)
+      })
+    })
+  },
   /**
    * 用户点击右上角分享
    */

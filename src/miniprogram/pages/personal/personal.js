@@ -7,90 +7,79 @@ Page({
    */
   data: {
     avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false
+    userInfo: {}, // 用户信息
+    logged: false, // 登录
+    isAdmin: false // 权限
   },
 
   onLoad () {
     let self = this
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              console.log(res.userInfo)
-              this.setData({
-                logged: true,
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
+    let userInfo = app.globalData.userInfo
+    let openid = app.globalData.openid
+    if (userInfo) {
+      this.setData({
+        avatarUrl: userInfo.avatarUrl,
+        userInfo: userInfo,
+        logged: true
+      })
+    } else {
+      app.userInfoReadyCallback = res =>{
+        this.setData({
+          avatarUrl: res.userInfo.avatarUrl,
+          userInfo: res.userInfo,
+          logged: true
+        })
+      }
+    }
+    // 权限判断
+    if (openid) {
+      setRoles(openid)
+    } else {
+      app.openIdReadyCallback = res => {
+        setRoles(res)
+      }
+    }
+    function setRoles (openid) {
+      const db = wx.cloud.database()
+      db.collection('user').where({
+        _openid: openid
+      }).get().then(res => {
+        if (res.data[0].phone) {
+          self.setData({
+            isAdmin: true
           })
         }
-      }
-    })
-    // 获取openid
-    console.log(app.globalData.openid)
-    if(!app.globalData.openid){
-      self.onGetOpenid();
-    }
-  },
-
-  onGetUserInfo (e) {// 获取用户信息
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
       })
     }
   },
-  // 获取用户openid
-  onGetOpenid: function () {
-    let self = this
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        self.setData({
-          openid: res.result.openid
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-      }
-    })
-  },
 
-  toManagement: function () {
-    wx.navigateTo({
-      url: '/pages/management/management',
-    })
+  onGetUserInfo (e) {
+    if (!this.data.logged && e.detail.userInfo) {
+      wx.s.createUser({
+        userInfo: e.detail.userInfo,
+        openid: app.globalData.openid
+      })
+      this.setData({
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        userInfo: e.detail.userInfo,
+        logged: true
+      })
+    }
   },
 
   toAddress: function (e) {
     console.log(e.currentTarget.dataset.address)
     let url
     switch (e.currentTarget.dataset.address) {
-      case 'management':// 后台管理
-        url = '/pages/management/management'
+      case 'commoditytype':// 类型管理
+        url = '../commoditytype/commoditytype'
         break
-      case 'commodityadd':// 新增商品
+      case 'commodityadd':// 新增管理
         url = '../commodityadd/commodityadd'
         break
-      case 'commoditytype':// 类型管理
-        url = '../commoditytype/commoditytype'
-        break
-      case 'commoditytype':// 类型管理
-        url = '../commoditytype/commoditytype'
-        break
-      case 'index':// 测试商城
-        url = '../index/index'
+      case 'commodityMgt':// 产品管理
+        url = '/pages/commodityMgt/commodityMgt'
         break
       default:
         url = null

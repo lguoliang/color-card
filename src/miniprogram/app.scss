@@ -288,3 +288,7 @@ button.rmbutton::before{
   border: 0;
 }
 
+scroll-view {
+  overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
+}

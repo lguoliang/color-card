@@ -30,7 +30,7 @@ module.exports = {
     ],
     dest: './src',
     autoprefixer: {
-      browsers: ['last 3 versions'],
+      overrideBrowserslist: ['last 3 versions'],
       cascade: false,
       remove:false
     },

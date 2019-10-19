@@ -241,3 +241,4 @@ textarea{height:120px}
 button.rmbutton{border-radius:0;font-size:28rpx;text-align:left;line-height:unset;color:unset;background-color:unset;overflow:unset}
 button.rmbutton::after{border:0}
 button.rmbutton::before{border:0}
+scroll-view{overflow-scrolling:touch;-webkit-overflow-scrolling:touch}

@@ -41,29 +41,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 6,
 			"list": [
-				{
-					"id": -1,
-					"name": "test",
-					"pathName": "views/test/test",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "首页",
-					"pathName": "views/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "类型管理",
-					"pathName": "pages/typeMgt/typeMgt",
-					"query": "",
-					"scene": null
-				},
 				{
 					"id": 4,
 					"name": "色卡详情",
@@ -77,13 +56,6 @@
 					"pathName": "pages/cardDetail/cardDetail",
 					"query": "dentistId=123",
 					"scene": 1012
-				},
-				{
-					"id": -1,
-					"name": "产品管理",
-					"pathName": "pages/productMgt/productMgt",
-					"query": "",
-					"scene": null
 				},
 				{
 					"id": -1,
@@ -103,6 +75,20 @@
 					"id": -1,
 					"name": "新增产品",
 					"pathName": "pages/commodityadd/commodityadd",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品管理",
+					"pathName": "pages/commodityMgt/commodityMgt",
 					"query": "",
 					"scene": null
 				}

@@ -1,16 +1,7 @@
 <!--pages/cardDetail/cardDetail.wxml-->
-<view>
-  <text>pages/cardDetail/cardDetail.wxml</text>
-  <view>{{cloudImg}}13213</view>
-  <view>{{cardId}}</view>
-  <view>{{scene}}</view>
-  <view>{{num}}</view>
-  <image src="{{image}}" />
-  <!-- <image src="{{cloudImg}}{{item}}" wx:for="{{prodDetail.prodImg}}" wx:key="unique" /> -->
-  <view wx:if="{{prodDetail}}" wx:for="{{prodDetail.prodImg}}" wx:key="unique">
-    <image src="{{item}}" />
-    <view>{{cloudImg}}</view>
-    {{item}}
+<view class="card-detail">
+  <!-- {{scene}} -->
+  <view class="card-list" wx:if="{{prodDetail}}" wx:for="{{prodDetail.img}}" wx:key="unique">
+    <image src="{{item}}" mode="widthFix" data-url="{{item}}" catchtap="previewImg" />
   </view>
-  <view>132132{{prodDetail}}</view>
 </view>

@@ -11,53 +11,60 @@ Page({
     typeList: null,
     showpopup: false,
     editValue: '',
-    curIndex: 0
+    curIndex: 0,
+    loading: false
   },
   onShow: function () {
     let self = this
     self.getType();
-    console.log(app.globalData)
-    console.log(app.globalData.openid)
   },
+  // 获取当前类型
+  getType: function () {
+    const db = wx.cloud.database()
+    wx.showLoading()
+    db.collection('prodType').get().then(res => {
+      console.log('获取产品类型', res.data)
+      wx.hideLoading()
+      this.setData({
+        typeList: res.data,
+        typeName: '',
+        typeColl: ''
+      })
+    })
+  },
+  // 输入控制
   handleChange: function (e) {
     this.setData({
       [e.currentTarget.dataset.name]: e.detail.value
     })
   },
-  // 获取当前类型
-  getType: function () {
-    wx.cloud.callFunction({
-      name: 'getProdType'
-    }).then(res => {
-      this.setData({
-        typeList: res.result.data
-      })
-      console.log('resasd', res.result.data)
-    })
-  },
   // 新增类型
   async addType () {
-    console.log(123)
     let self = this
     if (!this.data.typeName || !this.data.typeColl) {
-      wx.showToast({title: '类型不能为空', icon: 'none'})
+      wx.u.toast('类型不能为空')
     } else {
+      wx.showLoading({title: '加载中…'})
       const db = wx.cloud.database()
       const coll = db.collection('prodType')
       let typeName = this.data.typeName
       let typeColl = this.data.typeColl
-      wx.showLoading({title: '加载中…'})
-      coll.where({
+      // 查询类型
+      let queryType = await coll.where({
         type: typeName
-      }).get().then(res => {
-        if (!res.data.length) {
+      }).get()
+      if (!queryType.data.length) {
+        this.setData({
+          loading: true
+        })
+        if (this.data.loading) {
+          // 创建集合
           wx.cloud.callFunction({
             name: 'createColl',
             data: {
               coll: typeColl
             },
-            success (result) {
-              console.log("成功", result)
+            success (res) {
               coll.add({
                 data: {
                   type: typeName,
@@ -65,35 +72,27 @@ Page({
                 }
               }).then(res => {
                 wx.hideLoading()
-                wx.showToast({title: '新增成功'})
                 self.getType()
+                self.setData({
+                  loading: true
+                })
+                wx.showToast({title: '新增成功'})
               })
             },
-            fail(result) {
+            fail (err) {
               wx.hideLoading()
-              wx.showToast({title: '数据集已存在', icon: 'none'})
+              wx.u.toast('数据集已存在')
+              self.setData({
+                loading: true
+              })
             }
           })
-        } else {
-          wx.showToast({title: '类型已存在', icon: 'none'})
         }
-      })
+      } else {
+        wx.hideLoading()
+        wx.u.toast('类型已存在')
+      }
     }
-  },
-  // 删除
-  async removeType (e) {
-    wx.showLoading()
-    const db = wx.cloud.database()
-    const coll = db.collection('prodType')
-    let typeId;
-    await coll.where({coll: e.currentTarget.dataset.coll}).get().then(res => {
-      typeId = res.data[0]._id
-    })
-    coll.doc(typeId).remove().then(res => {
-      wx.hideLoading()
-      wx.showToast({title: '删除成功'})
-      this.getType()
-    })
   },
   // 编辑
   editNav (e) {
@@ -110,7 +109,7 @@ Page({
     , value = this.data.editValue
     , _id = this.data.typeList[this.data.curIndex]._id
     if (value === '') {
-      wx.showToast({title: '类型不能为空', icon: 'none'})
+      wx.u.toast('类型不能为空')
     } else {
       wx.showLoading()
       const db = wx.cloud.database()

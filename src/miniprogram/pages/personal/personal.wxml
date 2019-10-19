@@ -17,22 +17,20 @@
   <form>
     <view class="root-item">
       <view class="weui-cells weui-cells_after-title">
-        <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active" data-address="management" bindtap="toAddress">
-          <view class="weui-cell__bd">后台管理</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </button>
-        <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active" data-address="commoditytype" bindtap="toAddress">
-          <view class="weui-cell__bd">类型管理</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </button>
-        <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active" data-address="commodityadd" bindtap="toAddress">
-          <view class="weui-cell__bd">产品管理</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </button>
-        <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active" data-address="index" bindtap="toAddress">
-          <view class="weui-cell__bd">商城</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </button>
+        <block wx:if="{{logged && isAdmin}}">
+          <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active" data-address="commoditytype" bindtap="toAddress">
+            <view class="weui-cell__bd">类型管理</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </button>
+          <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active" data-address="commodityadd" bindtap="toAddress">
+            <view class="weui-cell__bd">新增产品</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </button>
+          <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active" data-address="commodityMgt" bindtap="toAddress">
+            <view class="weui-cell__bd">产品管理</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </button>
+        </block>
         <button form-type="submit" class="rmbutton weui-cell ff weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__bd">关于我们</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>

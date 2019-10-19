@@ -1,16 +1,9 @@
 //app.js
 App({
-  globalData: {
-    userId: '', // 用户ID
-    userInfo: null, // 用户信息
-    auth: { // 授权状态
-      'scope.userInfo': false
-    },
-    logged: false // 登录状态
-  },
   onLaunch: function () {
     wx.u = require('./assets/js/utils');
     wx.c = require('./assets/js/config');
+    wx.s = require('./assets/js/server');
     
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -24,6 +17,9 @@ App({
         traceUser: true,
       })
     }
+    this.globalData = {}
+    // 获取openid
+    this.onGetOpenid()
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -44,7 +40,6 @@ App({
         }
       }
     })
-    this.globalData = {}
   },
   onGetOpenid: function() {
     // 调用云函数
@@ -54,6 +49,9 @@ App({
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
         this.globalData.openid = res.result.openid
+        if (this.openIdReadyCallback) {
+          this.openIdReadyCallback(res.result.openid)
+        }
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)

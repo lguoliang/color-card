@@ -56,13 +56,23 @@
 }
 /* 编辑弹窗 */
 .type-edit-popup {
-  visibility:hidden;
-}
-.type-edit-popup.popup-show {
-  visibility:visible;
-}
-.type-edit-popup.popup-show .type-edit-box {
-  transform: translateY(0);
+  position: relative;
+  visibility: hidden;
+  z-index: 9;
+  .mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5)
+  }
+  &.popup-show {
+    visibility:visible;
+    .type-edit-box {
+      transform: translateY(0);
+    }
+  }
 }
 .type-edit-box {
   position: fixed;

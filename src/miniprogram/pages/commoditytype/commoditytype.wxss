@@ -9,7 +9,8 @@
 .info-item .weui-cell{padding:0}
 .info-item .typeadd-btn{width:140rpx;height:74rpx;line-height:74rpx;text-align:center;background:#81D8CF;border-radius:16rpx;font-size:30rpx;color:#333;font-weight:700}
 .info-item .btn-item{margin-left:16rpx}
-.type-edit-popup{visibility:hidden}
+.type-edit-popup{position:relative;visibility:hidden;z-index:9}
+.type-edit-popup .mask{position:fixed;width:100%;height:100%;top:0;left:0;background:rgba(0,0,0,.5)}
 .type-edit-popup.popup-show{visibility:visible}
 .type-edit-popup.popup-show .type-edit-box{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}
 .type-edit-box{position:fixed;left:0;bottom:0;width:100%;padding:40rpx 60rpx;background:#fff;-webkit-transform:translateY(100%);-ms-transform:translateY(100%);transform:translateY(100%);-webkit-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out}

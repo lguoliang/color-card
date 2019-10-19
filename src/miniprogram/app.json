@@ -3,35 +3,25 @@
     "pages/homepage/homepage",
     "pages/about/about",
     "pages/personal/personal",
-    "pages/typeMgt/typeMgt",
-    "pages/productMgt/productMgt",
     "pages/cardDetail/cardDetail",
     "pages/management/management",
     "pages/commoditytype/commoditytype",
     "pages/commodityadd/commodityadd",
-    
-    "pages/index/index",
-    "pages/community/community",
-    "pages/prodDetail/prodDetail",
-    "pages/myOrder/myOrder",
-    "pages/myCollection/myCollection",
-    "pages/myRretail/myRretail",
-    "pages/orderDetail/orderDetail",
-    "pages/cashier/cashier",
-    "views/index/index",
-    "views/test/test"
+    "pages/commodityMgt/commodityMgt",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundColor": "#F5F5F5",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#81d8cf",
-    "navigationBarTitleText": "电子色卡",
+    "navigationBarTitleText": "。。。",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#999999",
     "selectedColor": "#FFAB00",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/homepage/homepage",
