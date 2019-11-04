@@ -1,37 +1,19 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
-		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"coverView": true,
-		"autoAudits": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
+		"enhance": true
 	},
-	"compileType": "miniprogram",
-	"libVersion": "2.8.1",
-	"appid": "wxac37d86aac5cf502",
+	"appid": "wx697fe717d032874c",
 	"projectname": "color-card",
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
-	"cloudfunctionTemplateRoot": "",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
+	"libVersion": "2.8.1",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -48,14 +30,53 @@
 		"game": {
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
 					"name": "db guide",
 					"pathName": "pages/databaseGuide/databaseGuide",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "后台管理",
+					"pathName": "pages/admin/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品管理",
+					"pathName": "pages/admin/prodMgt/prodMgt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "类型管理",
+					"pathName": "pages/admin/typeMgt/typeMgt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品编辑",
+					"pathName": "pages/admin/prodEdit/prodEdit",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

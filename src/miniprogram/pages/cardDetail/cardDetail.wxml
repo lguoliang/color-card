@@ -1,7 +1,0 @@
-<!--pages/cardDetail/cardDetail.wxml-->
-<view class="card-detail">
-  <!-- {{scene}} -->
-  <view class="card-list" wx:if="{{prodDetail}}" wx:for="{{prodDetail.img}}" wx:key="unique">
-    <image src="{{item}}" mode="widthFix" data-url="{{item}}" catchtap="previewImg" />
-  </view>
-</view>

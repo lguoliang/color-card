@@ -1,0 +1,20 @@
+<!--pages/about/about.wxml-->
+<view class="cu-bar justify-center bg-white">
+  <view class="action sub-title">
+    <text class="text-xl text-bold text-blue">关于我们</text>
+    <text class="text-ABC text-blue">about</text>
+  </view>
+</view>
+<view class="padding">
+  <view class="padding-lr bg-white">
+    <view class="padding">
+      <view>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quibusdam doloremque, eos distinctio saepe numquam sapiente reprehenderit possimus incidunt est voluptates rerum, recusandae, nam dolore vero debitis qui nihil quidem.</view>
+      <view>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quibusdam doloremque, eos distinctio saepe numquam sapiente reprehenderit possimus incidunt est voluptates rerum, recusandae, nam dolore vero debitis qui nihil quidem.</view>
+      <view>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quibusdam doloremque, eos distinctio saepe numquam sapiente reprehenderit possimus incidunt est voluptates rerum, recusandae, nam dolore vero debitis qui nihil quidem.</view>
+      <view>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quibusdam doloremque, eos distinctio saepe numquam sapiente reprehenderit possimus incidunt est voluptates rerum, recusandae, nam dolore vero debitis qui nihil quidem.</view>
+      <view>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quibusdam doloremque, eos distinctio saepe numquam sapiente reprehenderit possimus incidunt est voluptates rerum, recusandae, nam dolore vero debitis qui nihil quidem.</view>
+      <view>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quibusdam doloremque, eos distinctio saepe numquam sapiente reprehenderit possimus incidunt est voluptates rerum, recusandae, nam dolore vero debitis qui nihil quidem.</view>
+      <view>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quibusdam doloremque, eos distinctio saepe numquam sapiente reprehenderit possimus incidunt est voluptates rerum, recusandae, nam dolore vero debitis qui nihil quidem.</view>
+    </view>
+  </view>
+</view>

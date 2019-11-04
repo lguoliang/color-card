@@ -1,0 +1,22 @@
+<!-- pages/admin/index.wxml -->
+<!-- 设置列表 -->
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange '></text>
+    系统管理
+  </view>
+</view>
+<view class="cu-list menu shadow-lg">
+  <view class="cu-item arrow">
+    <view class='content' data-url="prodMgt" bindtap='toAddress'>
+      <text class='cuIcon-form text-grey'></text>
+      <text class='text-grey'>产品管理</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <view class='content' data-url="typeMgt" bindtap='toAddress'>
+      <text class='cuIcon-tagfill text-grey'></text>
+      <text class='text-grey'>类型管理</text>
+    </view>
+  </view>
+</view>

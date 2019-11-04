@@ -1,9 +1,0 @@
-<!--pages/mallmanagement/mallmanagement.wxml-->
-<view class="mallmanagement">
-  <view class="management-item" wx:for="{{managementItem}}" wx:key="unique"
-    data-type="{{item.type}}"
-    bind:tap="toAddress">
-    <view class="title-item">{{item.name}}</view>
-    <view class="num-item" wx:if="{{item.num}}">{{item.num}}</view> 
-  </view>
-</view>

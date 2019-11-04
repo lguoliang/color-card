@@ -1,0 +1,2 @@
+/* pages/detail/detail.wxss */
+.card-list image{width:100%}
