@@ -1,14 +1,26 @@
 <!-- pages/admin/prodEdit/prodEdit.wxml -->
-<form bindsubmit="formClassifySubmit">
+<form>
   <!--  -->
   <view class="cu-form-group margin-top">
 		<view class="title">编号</view>
-		<input placeholder="请输入" data-name="code" bindinput="handleInput"></input>
+		<input placeholder="请输入" value="{{form.code}}" data-name="code" bindinput="handleForm"></input>
+  </view>
+  <!--  --> 
+  <view class="cu-list menu margin-top">
+    <view style="justify-content: left;" class="cu-item arrow" bindtap="handleTypeModel" data-type="{{form.type}}">
+      <view style="min-width: calc(4em + 34rpx);">
+        <text>标签</text>
+      </view>
+      <view class="action" wx:if="{{form.type.length > 0}}">
+        <view class="cu-tag round bg-orange light" wx:for="{{form.type}}" wx:key>{{typeShow[item]}}</view>
+      </view>
+      <view wx:else style="color: #777;font-size: 30rpx;">请选择</view>
+    </view>
   </view>
   <!--  -->
   <view class="cu-form-group align-start margin-top">
 		<view class="title">描述</view>
-		<textarea data-name="desc" bindinput="handleInput" placeholder="一句话介绍"></textarea>
+		<textarea data-name="desc" value="{{form.desc}}" bindinput="handleForm" placeholder="一句话介绍"></textarea>
   </view>
   <!--  -->
   <view class="cu-bar bg-white margin-top">
@@ -16,57 +28,53 @@
 			图片上传
 		</view>
 		<view class="action">
-			{{imgList.length}}/4
+			{{form.images.length}}/{{form.images.length + max}}
 		</view>
 	</view>
 	<view class="cu-form-group">
 		<view class="grid col-4 grid-square flex-sub">
-			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
-				<image src='{{imgList[index]}}' mode='aspectFill'></image>
+			<view class="bg-img" wx:for="{{form.images}}" wx:key bindtap="ViewImage" data-url="{{item}}">
+				<image src='{{item}}' mode='aspectFill'></image>
 				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
 					<text class="cuIcon-close"></text>
 				</view>
 			</view>
-			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+			<view class="solids" bindtap="ChooseImage" wx:if="{{max > 0}}">
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>
   </view>
   <!--  -->
   <view class="cu-list menu margin-top">
-    <view class="cu-item arrow" bindtap="handleTypeModel" data-type="{{form.type}}">
-      <view class="content">
-        <text>标签</text>
-      </view>
-      <view class="action" hidden="{{menuArrow}}">
-        <view class="cu-tag round bg-orange light">音乐</view>
-        <view class="cu-tag round bg-olive light">电影</view>
-        <view class="cu-tag round bg-blue light">旅行</view>
-      </view>
-    </view>
-    <view class="cu-item">
-      <view class="content">新品</view>
-      <switch></switch>
-    </view>
+    <!-- <view class="cu-item">
+      <view class="content">热门</view>
+      <switch checked="{{form.isHot}}" bindchange="handleForm" data-name="isHot"></switch>
+    </view> -->
     <view class="cu-item">
       <view class="content">上架</view>
-      <switch></switch>
+      <switch disabled="{{true}}" checked="{{form.isShow}}" bindchange="handleForm" data-name="isShow"></switch>
     </view>
   </view>
   <view style="padding:50rpx"></view>
   <!-- 文章详情维护（底部保存按钮） -->
-  <view class='box'>
+  <!-- <view class='box'>
     <view class="cu-bar foot bg-white tabbar border shop">
-      <view class="action" bindtap="showArticleList">
+      <view class="action" bindtap="toBack">
         <view class="cuIcon-back"></view>
         返回
       </view>
       <view class="action" bindtap="clearAll">
         <view class="cuIcon-delete"></view>
-        全部清空
+        清空
       </view>
       <view class="bg-orange submit" bindtap="savePostExceptContent">除图片以外保存</view>
-      <view class="bg-green submit" bindtap="saveProd">全部保存</view>
+      <view class="bg-green submit" bindtap="saveProd">保存</view>
+    </view>
+  </view> -->
+  <view class="box">
+    <view class="cu-bar btn-group foot bg-white">
+      <button class="cu-btn text-green line-green shadow" bindtap='clearAll'>清空</button>
+      <button class="cu-btn bg-green shadow-blur" bindtap='saveProd'>保存</button>
     </view>
   </view>
 </form>
@@ -93,16 +101,14 @@
   <view class="cu-dialog">
     <view class="cu-bar bg-white justify-end">
       <view class='content'>保存完成</view>
-      <view class='action' bindtap='hideShowModal'>
+      <view class='action' bindtap='handleShowModal'>
         <text class='cuIcon-close text-red'></text>
       </view>
     </view>
-    <view class='padding-xl'>文章已经处理成功啦～</view>
+    <view class='padding-xl'>产品已经处理成功啦～</view>
     <view class="cu-bar bg-white">
-      <view class='action margin-0 flex-sub  solid-left' bindtap='hideShowModal'>留在本页</view>
-      <view class='action margin-0 flex-sub text-green solid-left' bindtap='showArticleList'>
-        返回列表
-      </view>
+      <view class='action margin-0 flex-sub  solid-left' bindtap='handleShowModal'>留在本页</view>
+      <view class='action margin-0 flex-sub text-green solid-left' bindtap="toBack">返回列表</view>
     </view>
   </view>
 </view>

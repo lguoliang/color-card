@@ -1,12 +1,14 @@
 <!--pages/mine/mine.wxml-->
 <import src="../../templates/login.wxml" />
-<view class="bg-white">
+<view class="bg-white" style="position: relative;">
+  <button open-type='getUserInfo' bindgetuserinfo="onGetUserInfo" style="position: absolute;width: 100%;height: 100%;top: 0;left: 0;opacity: 0;z-index: 9;">授权登录</button>
   <view class="flex padding justify-center">
-    <view class="cu-avatar xl margin-top-xl round" style="background-image:url({{userInfo.avatarUrl}});"></view>
+    <view wx:if="{{userInfo.avatarUrl}}" class="cu-avatar xl margin-top-xl round" style="background-image:url({{userInfo.avatarUrl}});"></view>
+    <view wx:else class="cu-avatar xl margin-top-xl round bg-white"><image src="{{avatarUrl}}" style="display: block;width: 100%;height: 100%;" /></view>
   </view>
-  <view class="flex padding justify-center">
-    <view>{{userInfo.nickName}}</view>
-  </view>
+  <!-- <view class="flex padding justify-center"> -->
+    <view style="text-align: center;padding-bottom: 50rpx;">{{userInfo.nickName ? userInfo.nickName : '请登录'}}</view>
+  <!-- </view> -->
 </view>
 <view class="cu-list menu margin-top-sm shadow-lg">
   <view class="cu-item arrow">
@@ -24,11 +26,12 @@
   <view class="cu-item arrow">
     <view class='content' bindtap='showWechatCode' hover-class='none'>
       <text class='cuIcon-creativefill text-orange'></text>
-      <text class='text-grey'>联系作者</text>
+      <text class='text-grey'>联系客服</text>
+      <button open-type="contact" style="position: absolute;width: 100%;height: 100%;top: 0;left: 0;opacity: 0;"></button>
     </view>
   </view>
   <view class="cu-item arrow">
-    <view class='content' bindtap='showRelease' hover-class='none'>
+    <view class='content' bindtap='toAddress' data-url="release" hover-class='none'>
       <text class='cuIcon-formfill text-blue'></text>
       <text class='text-grey'>历史版本</text>
     </view>
@@ -41,4 +44,4 @@
   </view>
 </view>
 <!-- 弹出层：授权 -->
-<template is="login" data="{{showLogin: showLogin}}"></template>
+<!-- <template is="login" data="{{showLogin: showLogin}}"></template> -->

@@ -14,6 +14,12 @@ exports.main = async (event, context) => {
     case 'getTypeList': {
       return getTypeList(event)
     }
+    case 'upsertProd': {
+      return upsertProd(event)
+    }
+    case 'deleteProdById': {
+      return deleteProdById(event)
+    }
     default: break
   }
 }
@@ -29,13 +35,21 @@ async function addBaseType(event) {
   if (result.data.length > 0) {
     return false
   } else {
-    await db.collection(collection).add({
-      data: {
-        timestamp: Date.now(),
-        name: event.name,
-        num: 0
-      }
-    });
+    if (event.id) {
+      await db.collection(collection).doc(event.id).update({
+        data: {
+          name: event.name
+        }
+      });
+    } else {
+      await db.collection(collection).add({
+        data: {
+          timestamp: Date.now(),
+          name: event.name,
+          num: 0
+        }
+      });
+    }
     return true;
   }
 }
@@ -69,4 +83,42 @@ async function getTypeList(event) {
       errMsg: acc.errMsg,
     }
   })
+}
+
+/**
+ * 新增or更新产品
+ * @param {*} event 
+ */
+async function upsertProd(event) {
+  try {
+    let collection = "coll_prod"
+    if (event.id === "") {
+      await db.collection(collection).add({
+        data: event.prod
+      });
+    }
+    else {
+      await db.collection(collection).doc(event.id).update({
+        data: event.prod
+      });
+    }
+    return true;
+  } catch (e) {
+    console.error(e)
+    return false;
+  }
+}
+
+/**
+ * 根据id删除产品
+ * @param {*} event 
+ */
+async function deleteProdById(event) {
+  try {
+    await db.collection('coll_prod').doc(event.id).remove()
+    return true;
+  } catch (e) {
+    console.error(e)
+    return false;
+  }
 }

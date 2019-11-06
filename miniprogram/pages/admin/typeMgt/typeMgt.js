@@ -7,6 +7,8 @@ Page({
   data: {
     loading: false,
     typeList: [],
+    typeName: '',
+    typeInfo: '',
     isTypeModelShow: false
   },
 
@@ -41,6 +43,7 @@ Page({
   // 新增弹窗显示
   handelTypeModal() {
     this.setData({
+      typeName: '',
       isTypeModelShow: !this.data.isTypeModelShow
     })
   },
@@ -49,15 +52,16 @@ Page({
   formTypeSubmit: async function (e) {
     let self = this
     let name = e.detail.value.typeName
+    let typeInfo = this.data.typeInfo
     if (name === '') {
       wx.u.toast('类型不能为空')
     } else if (!self.data.loading) {
       self.setData({ loading: true })
       wx.showLoading()
-      let res = await wx.a.addBaseType(name)
+      let res = !typeInfo ? await wx.a.addBaseType(name) : await wx.a.editBaseType(typeInfo._id, name)
       if (res.result) {
         wx.hideLoading()
-        wx.showToast({title: '新增成功'})
+        wx.showToast({title: '处理成功'})
         self.setData({
           loading: false,
           typeName: ''
@@ -70,5 +74,20 @@ Page({
         wx.u.toast('类型已存在')
       }
     }
+  },
+  // editType
+  editType (e) {
+    let prod = e.currentTarget.dataset.prod
+    this.setData({
+      typeInfo: prod,
+      typeName: prod.name,
+      isTypeModelShow: !this.data.isTypeModelShow
+    })
+  },
+
+  goback () {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })

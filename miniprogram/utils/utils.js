@@ -24,6 +24,10 @@ const http = function (req) {
   })
 }
 
+const formatTime = function (time) {
+  return new Date(time).getTime()
+}
+
 const toast = function (title) {
   wx.showToast({
     icon: 'none',
@@ -41,5 +45,6 @@ const getdata = function (data) {
 module.exports = {
   http: http,
   toast: toast,
-  getdata: getdata
+  getdata: getdata,
+  formatTime: formatTime
 }

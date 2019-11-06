@@ -3,6 +3,7 @@
     "pages/homepage/index",
     "pages/about/about",
     "pages/mine/mine",
+    "pages/mine/release/release",
     "pages/detail/detail",
     "pages/admin/index",
     "pages/admin/typeMgt/typeMgt",
@@ -13,7 +14,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "...",
+    "navigationBarTitleText": "JR色卡",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

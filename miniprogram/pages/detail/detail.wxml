@@ -1,8 +1,29 @@
 <!--pages/detail/detail.wxml-->
 <view class="card-detail">
   <!-- {{scene}} -->
-  <view class="card-list" wx:if="{{detail}}" wx:for="{{detail.img}}" wx:key="unique">
+  <view class="card-list" wx:if="{{detail}}" wx:for="{{detail.images}}" wx:key="unique">
     <image src="{{item}}" mode="widthFix" data-url="{{item}}" catchtap="previewImg" />
   </view>
 </view>
 
+<!-- <view class="list-item" wx:if="{{wxacodeResult}}">
+  <text class="request-text">{{wxacodeResult}}</text>
+  <text class="request-text" wx:if="{{showClearWXACodeCache}}" bindtap="clearWXACodeCache">清除缓存</text>
+</view>
+<view class="guide">
+  <image src="{{wxacodeSrc}}" mode="aspectFit"></image>
+</view>
+<view class="guide">
+  <image src="{{image}}" mode="aspectFit"></image>
+</view>
+<view class="guide">
+  <image src="cloud://test-7b2wm.7465-test-7b2wm-1300448303/asd.png" mode="aspectFit"></image>
+</view>
+<view class="guide">
+  <image src="cloud://test-7b2wm.7465-test-7b2wm-1300448303/testcode.png" mode="aspectFit"></image>
+</view>
+<view class="guide">
+  <image src="cloud://test-7b2wm.7465-test-7b2wm-1300448303/test123.png" mode="aspectFit"></image>
+</view>
+<button class="add-prod cu-btn round line-blue shadow" bindtap="onGetWXACode" style="position: fixed;bottom: 100rpx;right: 30rpx;">+</button>
+ -->

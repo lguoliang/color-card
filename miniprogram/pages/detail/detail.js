@@ -6,7 +6,12 @@ Page({
    */
   data: {
     scene: null,
-    detail: null
+    detail: null,
+
+    image: '',
+    wxacodeSrc: '',
+    wxacodeResult: '',
+    showClearWXACodeCache: false
   },
 
   /**
@@ -20,19 +25,41 @@ Page({
         title: scene.id
       })
       self.getProdDetail(scene.id)
-    } else {
-      console.log(options.id)
+    } else if (options.id) {
+      console.log('options.id', options.id)
       wx.setNavigationBarTitle({
         title: options.id
       })
       self.getProdDetail(options.id)
     }
   },
+  onShow: function () {
+    let self = this
+    wx.cloud.callFunction({
+      name: 'getwxacode',
+      data: {
+        // page: 'pages/spikeZone/spikeZone',
+        page: 'pages/productDetail/productDetail',
+        scene: "pdid=123"
+      },
+      success (result) {
+        // wx.showToast({title: '推送成功'})
+        console.log("成功123", result)
+        self.setData({
+          // image: 'http://placehold.jp/150x160.png'
+          image: result.result.wxacodefileID
+        })
+      },
+      fail(result) {
+        console.log("失败", result)
+      }
+    })
+  },
   // 获取产品详情
   getProdDetail(event) {
     const db = wx.cloud.database()
-      db.collection('product').where({
-        num: event
+      db.collection('coll_prod').where({
+        code: event
       }).get().then(res => {
         console.log('product', res)
         this.setData({
@@ -46,9 +73,14 @@ Page({
     let self = this
     let url = e.currentTarget.dataset.url
     wx.previewImage({
-      urls: self.data.prodDetail.img,
+      urls: self.data.detail.images,
       current: url
     })
+  },
+
+  async onGetWXACode() {
+    let addReult = await wx.a.addPostQrCode('test123')
+    console.log('addReult', addReult)
   },
 
   /**

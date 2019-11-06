@@ -67,7 +67,8 @@ async function getWXACode(event) {
   // 此处将获取永久有效的小程序码，并将其保存在云文件存储中，最后返回云文件 ID 给前端使用
 
   const wxacodeResult = await cloud.openapi.wxacode.get({
-    path: 'pages/openapi/openapi',
+    // path: 'pages/cardDetail/cardDetail',
+    path: event.page,
   })
 
   const fileExtensionMatches = wxacodeResult.contentType.match(/\/([^\/]+)/)

@@ -1,60 +1,102 @@
-//index.js
-const app = getApp()
-
+// pages/admin/prodMgt/prodMgt.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
+    searching: false,
+    searchValue: '',
     TabCur: 0,
-    list: [{
-      name: '新品',
-      coll: 'hot'
-    }],
-    prod: []
+    list: [],
+    prod: [],
+    page: 1
   },
-  onLoad() {
-    this.getType()
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: async function (options) {
+    // 获取类型列表
+    await this.getTypeList()
   },
-  tabSelect(e) {
-    let dataset = e.currentTarget.dataset
-    this.getProd(dataset.coll)
+  searchChange (e) {
     this.setData({
-      TabCur: e.currentTarget.dataset.id
+      searchValue: e.detail.value
     })
   },
-  VerticalMain(e) {
-    console.log(e)
+  clearSearch () {
+    this.setData({
+      searching: false,
+      searchValue: '',
+      list: []
+    })
+    this.onPullDownRefresh()
   },
-  // 获取类型
-  getType: function () {
-    wx.u.getdata({
-      coll: 'prodtype'
-    }).then(res => {
-      console.log('getType', res)
-      this.getProd('hot')
+  searchConfirm (e) {
+    wx.a.searchConfirm(e.detail.value).then(res => {
       this.setData({
-        list: this.data.list.concat(res.result.data)
+        searching: true,
+        prod: res.data
       })
     })
   },
-  // 获取产品数据
-  getProd: function (coll) {
-    wx.showLoading()
-    wx.u.getdata({
-      coll: 'product',
-      filter: coll === 'hot' ? { isNew: true } : {
-        type: coll
-      }
-    }).then(res => {
-      console.log('getProd', res)
+  // 获取类型集合
+  getTypeList: async function () {
+    this.data.list.push({
+      _id: 'new',
+      name: '新品',
+    })
+    let list = await wx.a.getTypeList()
+    this.setData({
+      list: this.data.list.concat(list.result.data)
+    })
+    // 获取产品列表
+    this.getProdsList({ type: 'new' })
+  },
+
+  // 类型切换
+  tabSelect(e) {
+    let set = e.currentTarget.dataset
+    this.getProdsList({ type: set.id })
+    this.setData({
+      TabCur: set.idx
+    })
+  },
+
+  // 获取产品
+  getProdsList: async function (event) {
+    wx.showLoading({title: '加载中'})
+    let result = await wx.a.getProdsList(event)
+    if (result.data) {
       wx.hideLoading()
       this.setData({
-        prod: res.result.data
+        prod: result.data
       })
+    }
+  },
+
+  // 
+  toDetail (e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/detail/detail?id=${id}`
     })
   },
-  // 跳转详情页
-  toDetail: function (e) {
-    wx.navigateTo({
-      url: `/pages/detail/detail?id=${e.currentTarget.dataset.num}`
-    })
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: async function () {
+    await this.getTypeList()
+    wx.stopPullDownRefresh();
+  },
+
+  onShareAppMessage: function () {
+    return {
+      // title: '随时随地，易起出行',
+      // path: '/pages/homepage/index',
+      imageUrl: 'https://picsum.photos/id/20/180/180'
+    }
   }
 })

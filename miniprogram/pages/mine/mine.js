@@ -89,6 +89,9 @@ Page({
       case 'admin':// 后台管理
         url = '/pages/admin/index'
         break
+      case 'release':// 后台管理
+        url = '/pages/mine/release/release'
+        break
       default:
         url = null
     }
